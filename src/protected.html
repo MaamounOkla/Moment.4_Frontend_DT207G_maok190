@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skyddad sida</title>
+  <link rel="stylesheet" href="styles.css">
+ 
+</head>
+
+<body>
+  <h2>Skyddad data</h2>
+  <button id="loadBtn">Hämta data</button>
+  <pre id="output"></pre>
+
+  <a href="index.html">Tillbaka</a>
+ <script>
+    const API_URL = 'http://127.0.0.1:3000/api';
+    const output = document.getElementById('output');
+    const token = sessionStorage.getItem('token');
+
+    // Kräv token
+    if (!token) {
+      // Ingen token -> tillbaka till login
+      window.location.href = 'index.html';
+    }
+
+    document.getElementById('loadBtn').addEventListener('click', async () => {
+      output.textContent = 'Laddar...';
+      try {
+        const res = await fetch(`${API_URL}/protected`, {
+          headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/json' }
+        });
+        if (!res.ok) {
+         
+          const text = await res.text();
+          output.textContent = `Fel (${res.status}): ${text || res.statusText}`;
+          if (res.status === 401 || res.status === 403) {
+            sessionStorage.removeItem('token');
+            
+          window.location.href = 'index.html';
+          }
+          return;
+        }
+        const data = await res.json();
+        output.textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        output.textContent = `Nätverksfel: ${err.message}`;
+      }
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      sessionStorage.removeItem('token');
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+
+</html>
