@@ -87,5 +87,4 @@ Authorization: Bearer <token>
 * **Parcel**:  
   Används för att köra och paketera frontenden lokalt under utveckling.
 
-```
 
