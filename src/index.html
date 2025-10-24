@@ -1,33 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="sv">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Uppgift 4 – JWT Demo</title>
+  <link rel="stylesheet" href="styles.css" />
   <script src="main.js" defer></script>
-
 </head>
-
 <body>
-  <h2>Registrera</h2>
-  <form id="registerForm">
-    <input type="text" id="regUsername" placeholder="Användarnamn" required>
-    <input type="password" id="regPassword" placeholder="Lösenord" required>
-    <button type="submit">Registrera</button>
-  </form>
+  <main class="wrap">
+    <section class="card">
+      <h2>Registrera</h2>
+      <form id="registerForm" novalidate>
+        <input type="text" id="regUsername" placeholder="Användarnamn" autocomplete="username" />
+        <input type="password" id="regPassword" placeholder="Lösenord" autocomplete="new-password" />
+        <button type="submit" id="regBtn">Registrera</button>
+        <p id="regMsg" class="msg" role="status" aria-live="polite"></p>
+      </form>
+    </section>
 
-  <h2>Logga in</h2>
-  <form id="loginForm">
-    <input type="text" id="loginUsername" placeholder="Användarnamn" required>
-    <input type="password" id="loginPassword" placeholder="Lösenord" required>
-    <button type="submit">Logga in</button>
-  </form>
-
-  <p id="message"></p>
-  <a href="protected.html">Gå till skyddad sida</a>
- 
+    <section class="card">
+      <h2>Logga in</h2>
+      <form id="loginForm" novalidate>
+        <input type="text" id="loginUsername" placeholder="Användarnamn" autocomplete="username" />
+        <input type="password" id="loginPassword" placeholder="Lösenord" autocomplete="current-password" />
+        <button type="submit" id="loginBtn">Logga in</button>
+        <p id="loginMsg" class="msg" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
 </body>
-
 </html>
