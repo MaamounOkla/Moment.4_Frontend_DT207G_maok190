@@ -1,4 +1,4 @@
-```markdown
+
 # Frontend för JWT-autentisering  
 # moment4_frontend_DT207G  
 
@@ -87,5 +87,4 @@ Authorization: Bearer <token>
 * **Parcel**:  
   Används för att köra och paketera frontenden lokalt under utveckling.
 
-```
-```
+
